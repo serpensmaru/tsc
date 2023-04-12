@@ -12,17 +12,14 @@ export default class Cart {
     }
 
     summPrice(): number {
-        let total: number = 0;
-        this._items.forEach((item) => {
-            total += item.price;
-        });
-        return total;
+        return this._items.reduce(
+            (acum, current) => acum + current.price, 0
+        )
     }
 
     summPriceDiscount(discout: number): number {
-        let total: number = this.summPrice();
-        total = total - total * (discout / 100);
-        return total;
+        let total = this.summPrice();
+        return total - total * (discout / 100);
     }
     deleteId(id: number): void {
         this._items = this._items.filter( item  => item.id !== id )

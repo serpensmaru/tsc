@@ -11,16 +11,11 @@ class Cart {
         return [...this._items];
     }
     summPrice() {
-        let total = 0;
-        this._items.forEach((item) => {
-            total += item.price;
-        });
-        return total;
+        return this._items.reduce((acum, current) => acum + current.price, 0);
     }
     summPriceDiscount(discout) {
         let total = this.summPrice();
-        total = total - total * (discout / 100);
-        return total;
+        return total - total * (discout / 100);
     }
     deleteId(id) {
         this._items = this._items.filter(item => item.id !== id);
