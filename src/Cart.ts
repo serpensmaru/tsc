@@ -13,7 +13,7 @@ export default class Cart {
 
     summPrice(): number {
         return this._items.reduce(
-            (acum, current) => acum + current.price, 0
+            (acum: number, current: Buyble) => acum + current.price, 0
         )
     }
 
@@ -22,6 +22,6 @@ export default class Cart {
         return total - total * (discout / 100);
     }
     deleteId(id: number): void {
-        this._items = this._items.filter( item  => item.id !== id )
+        this._items = this._items.filter( (item: Buyble)  => item.id !== id )
     }
 }
